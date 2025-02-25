@@ -395,15 +395,16 @@ export default function Home() {
 
       <footer className="py-12 bg-[#1a1a1a] text-center">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <img src="/images/logo.png" alt="LogoDigsoft" className="" width={100} />
-            <div className="text-right">
+          <div className="flex flex-col items-center sm:flex-row sm:justify-between">
+            <img src="/images/logo.png" alt="LogoDigsoft" className="w-32" />
+            <div className="text-center sm:text-right mt-4 sm:mt-0">
               <p className="text-2xl font-bold mb-2">Created by DigSoft</p>
-              <p className="text-sm text-gray-400 mt-2">All Rights Reserved</p>
+              <p className="text-sm text-gray-400">All Rights Reserved</p>
             </div>
           </div>
         </div>
       </footer>
+
 
       <ImageModal
         isOpen={!!selectedImage}
