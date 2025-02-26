@@ -18,7 +18,6 @@ export default function MusicPlayer() {
   useEffect(() => {
     if (typeof window !== 'undefined' && audioRef.current && window.MediaElementPlayer) {
       playerRef.current = new window.MediaElementPlayer(audioRef.current, {
-        features: ['playpause'],
         startVolume: 0.8,
         success: function (mediaElement: any, domObject: any) {
           mediaElement.load();
@@ -28,8 +27,6 @@ export default function MusicPlayer() {
               console.log('Autoplay prevented. Waiting for user interaction.');
             });
           }
-  
-          // **Coba paksa elemen player disembunyikan**
           setTimeout(() => {
             if (domObject) {
               domObject.style.display = 'none';
@@ -39,7 +36,7 @@ export default function MusicPlayer() {
               domObject.style.opacity = '0';
               domObject.style.overflow = 'hidden';
             }
-          }, 500); // Tambahkan delay kecil untuk memastikan elemen sudah muncul dulu
+          }, 500); 
         }
       });
     }
