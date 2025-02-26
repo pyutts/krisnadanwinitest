@@ -19,8 +19,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
 }
 
-.mejs-container .mejs-volume-button,
-.mejs-container .mejs-volume-slider {
+.mejs__controls{
   display: none !important;
 }
 
