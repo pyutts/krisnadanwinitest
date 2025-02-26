@@ -28,14 +28,21 @@ export default function MusicPlayer() {
               console.log('Autoplay prevented. Waiting for user interaction.');
             });
           }
-          
-          if (domObject) {
-            domObject.style.display = 'none';
-          }
+  
+          // **Coba paksa elemen player disembunyikan**
+          setTimeout(() => {
+            if (domObject) {
+              domObject.style.display = 'none';
+              domObject.style.visibility = 'hidden';
+              domObject.style.height = '0px';
+              domObject.style.width = '0px';
+              domObject.style.opacity = '0';
+              domObject.style.overflow = 'hidden';
+            }
+          }, 500); // Tambahkan delay kecil untuk memastikan elemen sudah muncul dulu
         }
       });
     }
-  
 
     const handleInvitationOpen = () => {
       if (playerRef.current?.media) {
