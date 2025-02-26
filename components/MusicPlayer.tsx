@@ -18,7 +18,7 @@ export default function MusicPlayer() {
   useEffect(() => {
     if (typeof window !== 'undefined' && audioRef.current && window.MediaElementPlayer) {
       playerRef.current = new window.MediaElementPlayer(audioRef.current, {
-        features: ['playpause', 'volume'],
+        features: ['playpause'],
         startVolume: 0.8,
         success: function (mediaElement: any) {
           mediaElement.load();

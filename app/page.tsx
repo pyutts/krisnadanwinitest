@@ -27,21 +27,21 @@ const heroImages = [
 ];
 
 const galleryImages = [
-  "/images/gallery/gallery1.jpg",
-  "/images/gallery/gallery2.jpg",
-  "/images/gallery/gallery3.jpg",
-  "/images/gallery/gallery4.jpg",
-  "/images/gallery/gallery5.jpg",
-  "/images/gallery/gallery6.jpg",
-  "/images/gallery/gallery7.jpg",
-  "/images/gallery/gallery8.jpg",
-  "/images/gallery/gallery9.jpg",
-  "/images/gallery/gallery10.jpg",
-  "/images/gallery/gallery11.jpg",
-  "/images/gallery/gallery12.jpg",
-  "/images/gallery/gallery13.jpg",
-  "/images/gallery/gallery14.jpg",
-  "/images/gallery/gallery15.jpg",
+  "/images/Gallery/Gallery1.jpg",
+  "/images/Gallery/Gallery2.jpg",
+  "/images/Gallery/Gallery3.jpg",
+  "/images/Gallery/Gallery4.jpg",
+  "/images/Gallery/Gallery5.jpg",
+  "/images/Gallery/Gallery6.jpg",
+  "/images/Gallery/Gallery7.jpg",
+  "/images/Gallery/Gallery8.jpg",
+  "/images/Gallery/Gallery9.jpg",
+  "/images/Gallery/Gallery10.jpg",
+  "/images/Gallery/Gallery11.jpg",
+  "/images/Gallery/Gallery12.jpg",
+  "/images/Gallery/Gallery13.jpg",
+  "/images/Gallery/Gallery14.jpg",
+  "/images/Gallery/Gallery15.jpg",
 ];
 
 export default function Home() {
