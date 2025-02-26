@@ -27,6 +27,7 @@ export default function MusicPlayer() {
               console.log('Autoplay prevented. Waiting for user interaction.');
             });
           }
+
           setTimeout(() => {
             if (domObject) {
               domObject.style.display = 'none';
@@ -36,10 +37,20 @@ export default function MusicPlayer() {
               domObject.style.opacity = '0';
               domObject.style.overflow = 'hidden';
             }
+            const mejsContainers = document.querySelectorAll('.mejs__container');
+            mejsContainers.forEach((el) => {
+              (el as HTMLElement).style.display = 'none';
+              (el as HTMLElement).style.visibility = 'hidden';
+              (el as HTMLElement).style.opacity = '0';
+              (el as HTMLElement).style.height = '0px';
+              (el as HTMLElement).style.width = '0px';
+              (el as HTMLElement).style.overflow = 'hidden';
+            });
           }, 500); 
         }
       });
     }
+  
 
     const handleInvitationOpen = () => {
       if (playerRef.current?.media) {

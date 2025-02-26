@@ -19,9 +19,18 @@ body {
   font-family: 'Cormorant Garamond', serif;
 }
 
-.mejs__controls{
+.mejs__container, 
+.mejs__controls, 
+.mejs__overlay-button, 
+.mejs__mediaelement {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
 }
+
 
 /* Smooth scrolling */
 html {
