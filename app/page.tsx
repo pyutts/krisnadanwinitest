@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { useSearchParams } from 'next/navigation';
 import { toast } from "sonner";
 import MusicPlayer from "@/components/MusicPlayer";
 import ImageModal from "@/components/ImageModal";
@@ -48,12 +47,10 @@ const galleryImages = [
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [newMessage, setNewMessage] = useState({ name: '', message: '' });
+  const [newMessage, setNewMessage] = useState({ name: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-  const guestName = searchParams.get('to') || '';
 
   useEffect(() => {
     fetchMessages();
@@ -62,7 +59,7 @@ export default function Home() {
   useEffect(() => {
     if (isOpen) {
       const interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => 
+        setCurrentImageIndex((prevIndex) =>
           prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
         );
       }, 5000);
@@ -151,12 +148,12 @@ export default function Home() {
             </h1>
             <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
             <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
-            {guestName && (
-              <div className="mt-8">
+      
+              {/* <div className="mt-8">
                 <p className="text-lg text-gray-300">Majeng ring</p>
-                <p className="text-xl font-semibold mt-2">{guestName}</p>
-              </div>
-            )}
+                <p className="text-xl font-semibold mt-2"></p>
+              </div> */}
+
             <Button
               onClick={handleOpenInvitation}
               className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none px-8 py-6"
