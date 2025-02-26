@@ -20,7 +20,7 @@ export default function MusicPlayer() {
       playerRef.current = new window.MediaElementPlayer(audioRef.current, {
         features: ['playpause'],
         startVolume: 0.8,
-        success: function (mediaElement: any) {
+        success: function (mediaElement: any, domObject: any) {
           mediaElement.load();
           const playPromise = mediaElement.play();
           if (playPromise !== undefined) {
@@ -28,9 +28,14 @@ export default function MusicPlayer() {
               console.log('Autoplay prevented. Waiting for user interaction.');
             });
           }
+          
+          if (domObject) {
+            domObject.style.display = 'none';
+          }
         }
       });
     }
+  
 
     const handleInvitationOpen = () => {
       if (playerRef.current?.media) {
