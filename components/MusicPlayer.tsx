@@ -91,11 +91,12 @@ export default function MusicPlayer() {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <audio 
-        ref={audioRef}
-        style={{ display: 'none' }}
-        preload="auto"
-        loop
-      >
+          ref={audioRef}
+          className="absolute -left-full w-0 h-0 overflow-hidden invisible"
+          preload="auto"
+          loop
+        >
+
         <source src="/music/background-music.mp3" type="audio/mp3" />
       </audio>
       <Button
