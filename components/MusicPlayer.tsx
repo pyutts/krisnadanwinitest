@@ -1,114 +1,59 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-import { Button } from "./ui/button";
-import "mediaelement/build/mediaelementplayer.min.css";
-
-declare global {
-  interface Window {
-    MediaElementPlayer: any;
-  }
-}
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function MusicPlayer() {
+  const [isMuted, setIsMuted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const playerRef = useRef<any>(null);
-  const [isPlaying, setIsPlaying] = useState(false); // 🔥 Menyimpan status musik
 
+  // Autoplay & loop musik
   useEffect(() => {
-    if (typeof window !== "undefined" && audioRef.current && window.MediaElementPlayer) {
-      playerRef.current = new window.MediaElementPlayer(audioRef.current, {
-        startVolume: 0.8,
-        success: function (mediaElement: any, domObject: any) {
-          mediaElement.load();
-
-          // ✅ Coba autoplay, jika gagal tunggu interaksi pengguna
-          const playPromise = mediaElement.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(() => {
-              console.log("Autoplay dicegah, menunggu interaksi pengguna.");
-            });
-          }
-
-          // ✅ Sembunyikan elemen pemutar agar tidak mengganggu layout
-          setTimeout(() => {
-            if (domObject) {
-              domObject.style.display = "none";
-              domObject.style.visibility = "hidden";
-              domObject.style.height = "0px";
-              domObject.style.width = "0px";
-              domObject.style.opacity = "0";
-              domObject.style.overflow = "hidden";
-            }
-            const mejsContainers = document.querySelectorAll(".mejs__container");
-            mejsContainers.forEach((el) => {
-              (el as HTMLElement).style.display = "none";
-              (el as HTMLElement).style.visibility = "hidden";
-              (el as HTMLElement).style.opacity = "0";
-              (el as HTMLElement).style.height = "0px";
-              (el as HTMLElement).style.width = "0px";
-              (el as HTMLElement).style.overflow = "hidden";
-            });
-          }, 500);
-        },
-      });
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.5; // Volume awal
+      audio.play().catch(() => console.log("Autoplay mungkin diblokir browser"));
     }
-
-    // ✅ Event listener untuk memastikan audio bisa dimainkan
-    const handleAudioReady = () => {
-      console.log("Audio siap diputar!");
-    };
-
-    if (audioRef.current) {
-      audioRef.current.addEventListener("canplay", handleAudioReady);
-    }
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.removeEventListener("canplay", handleAudioReady);
-      }
-      
-      if (playerRef.current && typeof playerRef.current.remove === "function") {
-        try {
-          playerRef.current.remove();
-        } catch (error) {
-          console.error("Error saat menghapus MediaElementPlayer:", error);
-        }
-      }
-    };
   }, []);
 
-  // ✅ Fungsi untuk memainkan atau menjeda musik
-  const toggleMusic = () => {
-    if (playerRef.current?.media) {
-      if (playerRef.current.media.paused) {
-        playerRef.current.media.play();
-        setIsPlaying(true);
-      } else {
-        playerRef.current.media.pause();
-        setIsPlaying(false);
-      }
+  // Fungsi untuk toggle mute/unmute
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
     }
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <audio
-        ref={audioRef}
-        className="absolute -left-full w-0 h-0 overflow-hidden invisible"
-        preload="auto"
-        loop
-      >
-        <source src="/music/background-music.mp3" type="audio/mp3" />
-      </audio>
-      <Button
-        onClick={toggleMusic}
-        className="rounded-full w-12 h-12 bg-[#B8860B] hover:bg-[#8B6508] p-0 flex items-center justify-center"
-        aria-label="Toggle music"
-      >
-        {isPlaying ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}
-      </Button>
-    </div>
+    <>
+      {/* Audio autoplay & loop */}
+      <audio ref={audioRef} src="/music/background-music.mp3" autoPlay loop />
+
+      <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
+        {/* Garis kuning (bisa ditekan untuk membuka/menutup tombol) */}
+        <button
+          className="h-16 w-2 bg-yellow-500 transition-all"
+          onClick={() => setIsOpen(!isOpen)}
+        ></button>
+
+        {/* Tombol volume (lebih dekat ke garis kuning) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.button
+              onClick={toggleMute}
+              className="absolute left-2 p-3 bg-[#B8860B] text-white rounded-r-lg shadow-md"
+              initial={{ x: -40, opacity: 0 }}
+              animate={{ x: 10, opacity: 1 }}
+              exit={{ x: -40, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 }
