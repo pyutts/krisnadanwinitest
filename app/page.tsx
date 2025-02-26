@@ -197,12 +197,28 @@ export default function Home() {
           <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
         </motion.div>
       </section>
+
+       {/* Section Countdown */}
+       <section className="py-20 bg-[#1a1a1a] text-center">
+        <h2 className="text-4xl mb-4 font-serif text-[#B8860B]">Menuju Hari Bahagia</h2>
+        <br />
+        <div className="max-w-4xl mx-auto">
+          <CountdownTimer />
+        </div>
+      </section>
   
       {/* Section Kedua Mempelai */}
       <section className="py-20 bg-[#222222]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif mb-4">Mempelai</h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg mb-8 font-serif text-center leading-relaxed">
+                    Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/ Tuhan Yang Maha Esa, 
+                    kami bermaksud mengundang Bapak/ Ibu/ Saudara/ i pada Upacara Manusa Yadnya 
+                    Pawiwahan putra dan putri kami.
+              </p>
+            </div>  
             <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
           </div>
           <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
@@ -242,14 +258,6 @@ export default function Home() {
               <p className="text-gray-300 font-serif">I Wayan Widiasna & Ni Wayan Sadrini</p>
             </motion.div>
           </div>
-        </div>
-      </section>
-  
-      {/* Section Countdown */}
-      <section className="py-20 bg-[#1a1a1a] text-center">
-        <h2 className="text-4xl mb-4 font-bold font-serif text-[#B8860B]">Menghitung Hari Bahagia</h2>
-        <div className="max-w-4xl mx-auto">
-          <CountdownTimer />
         </div>
       </section>
   
