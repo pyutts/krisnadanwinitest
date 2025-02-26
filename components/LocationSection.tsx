@@ -32,7 +32,7 @@ export default function LocationSection() {
           </div>
           {/* Coordinates */}
           <div className="flex flex-col items-center justify-center p-8 border border-[#B8860B] rounded-lg">
-            <h3 className="text-2xl font-serif mb-4">Ingin ke Tempat Mempelai?</h3>
+            <h3 className="text-2xl font-serif mb-4 text-center">Ingin ke Tempat Mempelai?</h3>
             <p className="text-gray-300 mb-6 text-center">
               Tekan tombol di bawah ini untuk petunjuk arah menuju lokasi acara
             </p>

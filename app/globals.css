@@ -19,6 +19,11 @@ body {
   font-family: 'Cormorant Garamond', serif;
 }
 
+.mejs-container .mejs-volume-button,
+.mejs-container .mejs-volume-slider {
+  display: none !important;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

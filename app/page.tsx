@@ -222,7 +222,7 @@ export default function Home() {
             <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
             <br />
             <div className="max-w-3xl mx-auto">
-              <p className="text-lg mb-8 leading-relaxed">
+              <p className="text-lg mb-8 leading-relaxed font-serif">
                 Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/ Tuhan Yang Maha Esa, 
                 kami bermaksud mengundang Bapak/ Ibu/ Saudara/ i pada Upacara Manusa Yadnya 
                 Pawiwahan putra dan putri kami.
