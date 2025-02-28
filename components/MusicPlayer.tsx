@@ -9,19 +9,17 @@ export default function MusicPlayer() {
   const [isOpen, setIsOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Autoplay & loop musik
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
       audio.volume = 0.5; // Volume awal
-      audio.play().catch(() => console.log("Autoplay mungkin diblokir browser"));
+      audio.play().catch(() => console.log("aman"));
     }
   }, []);
 
-  // Fungsi untuk toggle mute/unmute
   const toggleMute = () => {
     if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
+      audioRef.current.muted = !isMuted;''
       setIsMuted(!isMuted);
     }
   };
@@ -32,7 +30,6 @@ export default function MusicPlayer() {
       <audio ref={audioRef} src="/music/background-music.mp3" autoPlay loop />
 
       <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
-        {/* Garis kuning (bisa ditekan untuk membuka/menutup tombol) */}
         <button
           className="h-16 w-2 bg-yellow-500 transition-all"
           onClick={() => setIsOpen(!isOpen)}

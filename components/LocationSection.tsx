@@ -10,10 +10,10 @@ export default function LocationSection() {
   };
 
   return (
-    <section className="py-20 bg-[#222222]">
+    <section className="py-20 bg-[#fff3db]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 relative">
-          <h2 className="text-4xl font-serif mb-4">Lokasi</h2>
+        <div className="text-center mb-12 relative">
+          <h2 className="text-4xl font-semibold font-serif mb-4 text-[#B8860B]">Lokasi</h2>
           <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
         </div>
 
@@ -32,8 +32,8 @@ export default function LocationSection() {
           </div>
           {/* Coordinates */}
           <div className="flex flex-col items-center justify-center p-8 border border-[#B8860B] rounded-lg">
-            <h3 className="text-2xl font-serif mb-4 text-center">Ingin ke Tempat Mempelai?</h3>
-            <p className="text-gray-300 mb-6 text-center">
+            <h3 className="text-2xl font-serif mb-4 text-center text-black">Ingin ke Tempat Mempelai?</h3>
+            <p className="mb-6 text-center text-black">
               Tekan tombol di bawah ini untuk petunjuk arah menuju lokasi acara
             </p>
             <Button

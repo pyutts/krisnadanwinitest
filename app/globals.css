@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
 :root {
   --foreground-rgb: 255, 255, 255;
@@ -71,7 +71,7 @@ html {
 /* Form styling */
 input, select, textarea {
   background: transparent;
-  border: 1px solid #B8860B;
+  border: 1px solid #b8860b;
   color: white;
   transition: all 0.3s ease;
 }

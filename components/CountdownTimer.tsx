@@ -39,7 +39,7 @@ const CountdownTimer = () => {
             <div className="bg-[#B8860B] text-white px-4 py-2 rounded-lg min-w-[80px] text-center">
               <span className="text-2xl font-bold">{unit.value}</span>
             </div>
-            <span className="text-sm mt-2 text-gray-300">{unit.label}</span>
+            <span className="text-sm mt-2 text-[#B8860B]">{unit.label}</span>
           </motion.div>
         ))}
       </div>

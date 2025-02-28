@@ -118,6 +118,7 @@ export default function Home() {
     }
   };
 
+
   const handleOpenInvitation = () => {
     setIsOpen(true);
     window.dispatchEvent(new Event('invitationOpened'));
@@ -191,36 +192,44 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="relative text-center z-10 px-4"
         >
-          <p className="text-xl mb-4">Om Swastiastu</p>
-          <h1 className="text-5xl md:text-7xl font-serif mb-6">Krisna & Wini</h1>
-          <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-6"></div>
+          <p className="text-xl mb-4">The Wedding of</p>
+          <h1 className="text-5xl md:text-7xl font-serif mb-4">Krisna & Wini</h1>
+          <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-4"></div>
           <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
         </motion.div>
       </section>
 
        {/* Section Countdown */}
-       <section className="py-20 bg-[#1a1a1a] text-center">
-        <h2 className="text-4xl mb-4 font-serif text-[#B8860B]">Menuju Hari Bahagia</h2>
+       <section className="py-20 bg-[#ffff] text-center">
+        <p className="text-center text-balance max-w-3xl mx-auto mb-12 text-[#242424]">"Ya Tuhan, anugerahkanlah kepada pasangan pengantin ini kebahagiaan, keduanya tiada terpisahkan dan panjang umur. Semoga penganten ini dianugerahkan putra dan cucu yang memberikan penghiburan, tinggal di rumah yang penuh kegembiraan."
+        </p>
+        <div className="mx-auto w-32 h-1 bg-[#b18121] mb-2"></div>
+        <p className="text-center font-bold text-[#b18121] mb-2">RG VEDA X.85.42</p>
+        <div className="mx-auto w-32 h-1 bg-[#b18121] "></div>
+
+        {/* <h2 className="text-4xl mb-4 font-serif text-[#B8860B]">Menuju Hari Bahagia</h2>
         <br />
         <div className="max-w-4xl mx-auto">
           <CountdownTimer />
-        </div>
+        </div> */}
       </section>
   
       {/* Section Kedua Mempelai */}
-      <section className="py-20 bg-[#222222]">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-[#fff3db]">
+        <div className="cont~ainer mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif mb-4">Mempelai</h2>
+            <div className="flex flex-col items-center justify-center">
+              <img src="/images/salam.png" alt="salam" className="w-32 mb-6" />
+            </div>
             <div className="max-w-3xl mx-auto">
-              <p className="text-lg mb-8 font-serif text-center leading-relaxed">
+              <p className="text-lg mb-8 font-serif text-center text-black leading-relaxed">
                     Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/ Tuhan Yang Maha Esa, 
                     kami bermaksud mengundang Bapak/ Ibu/ Saudara/ i pada Upacara Manusa Yadnya 
                     Pawiwahan putra dan putri kami.
               </p>
             </div>  
-            <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
           </div>
+          <br />
           <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -235,9 +244,9 @@ export default function Home() {
                   className="object-cover rounded-full"
                 />
               </div>
-              <h3 className="text-xl font-serif mb-2">I Putu Agus Chrisna Reinaldy, S.H</h3>
-              <p className="text-[#B8860B] mb-4 font-serif">Putra Pertama dari Pasangan</p>
-              <p className="text-gray-300 font-serif">I Putu Rajeg & Ni Ketut Wardani</p>
+              <h3 className="text-xl font-serif mb-2 text-black">I Putu Agus Chrisna Reinaldy, S.H</h3>
+              <p className="text-[#B8860B] mb-2 font-serif">Putra Pertama dari Pasangan</p>
+              <p className="font-serif text-black">I Putu Rajeg & Ni Ketut Wardani</p>
             </motion.div>
   
             <motion.div 
@@ -253,9 +262,9 @@ export default function Home() {
                   className="object-cover rounded-full"
                 />
               </div>
-              <h3 className="text-xl font-serif mb-2">Ni Wayan Wini Widarini, S.Pd., M.Pd</h3>
-              <p className="text-[#B8860B] mb-4 font-serif">Putri Pertama dari Pasangan</p>
-              <p className="text-gray-300 font-serif">I Wayan Widiasna & Ni Wayan Sadrini</p>
+              <h3 className="text-xl font-serif mb-2 text-black">Ni Wayan Wini Widarini, S.Pd., M.Pd</h3>
+              <p className="text-[#B8860B] mb-2 font-serif">Putri Pertama dari Pasangan</p>
+              <p className="font-serif text-black">I Wayan Widiasna & Ni Wayan Sadrini</p>
             </motion.div>
           </div>
         </div>
@@ -263,13 +272,25 @@ export default function Home() {
   
       {/* Section Schedule */}
       <ScheduleSection />
+
+      
+      {/* Section Lokasi */}
+      <LocationSection />
+
+      {/* Section Countdown */}
+      <section className="py-20 bg-[#ffff] text-center">
+        <h2 className="text-balance font-semibold mb-4 text-[#B8860B]">Siang dan malam berganti begitu cepat, di antara saat-saat mendebarkan yang belum pernah kami rasakan sebelumnya. Kami nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi ikrar janji suci kami di hari yang bahagia.</h2>
+        <br />
+        <div className="max-w-4xl mx-auto">
+          <CountdownTimer />
+        </div>
+      </section>
   
       {/* Section Galeri */}
-      <section className="py-20 bg-[#1a1a1a]">
+      <section className="py-20 bg-[#fff3db]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif mb-4">Galeri Photo</h2>
-          <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
-          <br /> <br />
+          <h2 className="text-3xl font-serif font-semibold mb-4 text-[#B8860B]">Gallery Photo</h2>
+          <div className="w-32 h-1 mb-12 bg-[#B8860B] mx-auto"></div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
             {galleryImages.map((src, index) => (
               <motion.div
@@ -292,16 +313,13 @@ export default function Home() {
           </div>
         </div>
       </section>
-  
-      {/* Section Lokasi */}
-      <LocationSection />
 
       {/* Section Doa & Ucapan */}
-      <section className="py-20 bg-[#222222]">
+      <section className="py-20 bg-[#fff]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif mb-4">Doa & Ucapan</h2>
-            <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
+            <h2 className="text-4xl font-serif mb-4 font-semibold text-[#B8860B]">Doa & Ucapan</h2>
+            <div className="w-40 h-1 bg-[#B8860B] mx-auto"></div>
           </div>
           <div className="max-w-2xl mx-auto">
             <form onSubmit={handleSubmitMessage} className="mb-8">
@@ -311,9 +329,20 @@ export default function Home() {
                   placeholder="Nama"
                   value={newMessage.name}
                   onChange={(e) => setNewMessage(prev => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-4 py-2 bg-transparent border border-[#B8860B] rounded-md"
+                  className="w-full px-4 py-2 border border-[#B8860B] rounded-md"
                   required
                 />
+              {/* <select
+                value={newMessage.status}
+                onChange={(e) => setNewMessage(prev => ({ ...prev, status: e.target.value }))}
+                className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-700 appearance-none"
+                required
+              >
+                <option value="" disabled selected>Pilih Kehadiran</option>
+                <option value="hadir">Hadir</option>
+                <option value="tidak_hadir">Tidak Hadir</option>
+              </select> */}
+
                 <textarea
                   placeholder="Doa & Ucapan"
                   value={newMessage.message}
@@ -342,8 +371,8 @@ export default function Home() {
                     <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#B8860B]" />
                     <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#B8860B]" />
                     <div className="flex justify-between mb-2">
-                      <h3 className="font-semibold">{msg.name}</h3>
-                      <span className="text-sm text-gray-400">
+                      <h3 className="font-semibold text-gray-600">{msg.name}</h3>
+                      <span className="text-sm text-gray-600">
                         {new Date(msg.created_at).toLocaleDateString('id-ID', {
                           year: 'numeric',
                           month: 'long',
@@ -353,7 +382,7 @@ export default function Home() {
                         })}
                       </span>
                     </div>
-                    <p className="text-gray-300">{msg.message}</p>
+                    <p className="text-gray-600">{msg.message}</p>
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -364,14 +393,14 @@ export default function Home() {
 
   
       {/* Footer */}
-      <footer className="py-12 bg-[#1a1a1a] text-center">
+      <footer className="py-12 bg-[#fff] text-center">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center sm:flex-row sm:justify-between">
             {/* Logo DigSoft Tidak Hilang */}
-            <img src="/images/logo.png" alt="Logo DigSoft" className="w-32" />
+            <img src="/images/logo.png" alt="Logo DigSoft" className="w-32"/>
             <div className="text-center sm:text-right mt-4 sm:mt-0">
-              <p className="text-2xl font-bold mb-2">Created by DigSoft</p>
-              <p className="text-sm text-gray-400">All Rights Reserved</p>
+              <p className="text-2xl font-bold mb-2 text-gray-950">Created by DigSoft</p>
+              <p className="text-sm text-gray-600">All Rights Reserved</p>
             </div>
           </div>
         </div>
