@@ -37,11 +37,11 @@ const galleryImages = [
   "/images/Gallery/Gallery8.jpg",
   "/images/Gallery/Gallery9.jpg",
   "/images/Gallery/Gallery10.jpg",
-  "/images/Gallery/Gallery11.jpg",
-  "/images/Gallery/Gallery12.jpg",
-  "/images/Gallery/Gallery13.jpg",
-  "/images/Gallery/Gallery14.jpg",
-  "/images/Gallery/Gallery15.jpg",
+  // "/images/Gallery/Gallery11.jpg",
+  // "/images/Gallery/Gallery12.jpg",
+  // "/images/Gallery/Gallery13.jpg",
+  // "/images/Gallery/Gallery14.jpg",
+  // "/images/Gallery/Gallery15.jpg",
 ];
 
 export default function Home() {
@@ -143,9 +143,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <p className="text-xl md:text-xl text-gray-300">Om Swastiastu</p>
+            <p className="text-xl md:text-xl text-gray-300">The Wedding of</p>
             <h1 className="text-4xl md:text-6xl font-serif mb-4 font-light tracking-wide">
-              Krisna & Wini
+              Chrisna & Wini
             </h1>
             <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
             <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
@@ -193,7 +193,7 @@ export default function Home() {
           className="relative text-center z-10 px-4"
         >
           <p className="text-xl mb-4">The Wedding of</p>
-          <h1 className="text-5xl md:text-7xl font-serif mb-4">Krisna & Wini</h1>
+          <h1 className="text-5xl md:text-7xl font-serif mb-4">Chrisna & Wini</h1>
           <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-4"></div>
           <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
         </motion.div>
@@ -201,7 +201,7 @@ export default function Home() {
 
        {/* Section Countdown */}
        <section className="py-20 bg-[#ffff] text-center">
-        <p className="text-center text-balance max-w-3xl mx-auto mb-12 text-[#242424]">"Ya Tuhan, anugerahkanlah kepada pasangan pengantin ini kebahagiaan, keduanya tiada terpisahkan dan panjang umur. Semoga penganten ini dianugerahkan putra dan cucu yang memberikan penghiburan, tinggal di rumah yang penuh kegembiraan."
+        <p className="text-center text-balance max-w-3xl mx-auto mb-12 font-semibold text-[#B8860B]">"Ya Tuhan, anugerahkanlah kepada pasangan pengantin ini kebahagiaan, keduanya tiada terpisahkan dan panjang umur. Semoga penganten ini dianugerahkan putra dan cucu yang memberikan penghiburan, tinggal di rumah yang penuh kegembiraan."
         </p>
         <div className="mx-auto w-32 h-1 bg-[#b18121] mb-2"></div>
         <p className="text-center font-bold text-[#b18121] mb-2">RG VEDA X.85.42</p>
@@ -279,7 +279,7 @@ export default function Home() {
 
       {/* Section Countdown */}
       <section className="py-20 bg-[#ffff] text-center">
-        <h2 className="text-balance font-semibold mb-4 text-[#B8860B]">Siang dan malam berganti begitu cepat, di antara saat-saat mendebarkan yang belum pernah kami rasakan sebelumnya. Kami nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi ikrar janji suci kami di hari yang bahagia.</h2>
+        <h2 className="text-balance max-w-3xl mx-auto mb-4 font-semibold text-[#B8860B]">"Siang dan malam berganti begitu cepat, di antara saat-saat mendebarkan yang belum pernah kami rasakan sebelumnya. Kami nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi ikrar janji suci kami di hari yang bahagia."</h2>
         <br />
         <div className="max-w-4xl mx-auto">
           <CountdownTimer />
@@ -329,7 +329,7 @@ export default function Home() {
                   placeholder="Nama"
                   value={newMessage.name}
                   onChange={(e) => setNewMessage(prev => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-4 py-2 border border-[#B8860B] rounded-md"
+                  className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-950"
                   required
                 />
               {/* <select
@@ -347,7 +347,7 @@ export default function Home() {
                   placeholder="Doa & Ucapan"
                   value={newMessage.message}
                   onChange={(e) => setNewMessage(prev => ({ ...prev, message: e.target.value }))}
-                  className="w-full px-4 py-2 bg-transparent border border-[#B8860B] rounded-md"
+                  className="w-full px-4 py-2 bg-transparent border border-[#B8860B] rounded-md text-gray-950"
                   rows={4}
                   required
                 ></textarea>
@@ -393,11 +393,11 @@ export default function Home() {
 
   
       {/* Footer */}
-      <footer className="py-12 bg-[#fff] text-center">
+      <footer className="py-12 bg-gray-100 text-center">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center sm:flex-row sm:justify-between">
             {/* Logo DigSoft Tidak Hilang */}
-            <img src="/images/logo.png" alt="Logo DigSoft" className="w-32"/>
+            <img src="/images/logo.png" alt="Logo DigSoft" className="w-36"/>
             <div className="text-center sm:text-right mt-4 sm:mt-0">
               <p className="text-2xl font-bold mb-2 text-gray-950">Created by DigSoft</p>
               <p className="text-sm text-gray-600">All Rights Reserved</p>

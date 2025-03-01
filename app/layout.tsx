@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Krisna & Wini Wedding',
+  title: 'Chrisna & Wini Wedding',
   description: 'Template DigSoft Wedding Modern 1', 
 };
 
