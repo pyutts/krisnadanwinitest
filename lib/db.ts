@@ -14,10 +14,10 @@ export interface MessageResult {
 }
 
 const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST || 'sql12.freesqldatabase.com',
-  user: process.env.MYSQL_USER || 'sql12764641',
-  password: process.env.MYSQL_PASSWORD || 'q2tjfuXCfp',
-  database: process.env.MYSQL_DATABASE || 'sql12764641',
+  host:'sql12.freesqldatabase.com',
+  user:'sql12766739',
+  password:'t5Qi7nhjDW',
+  database:'sql12766739',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
