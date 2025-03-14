@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import MusicPlayer from "@/components/MusicPlayer";
 import ImageModal from "@/components/ImageModal";
-import LocationSection from "@/components/LocationSection";
 import CountdownTimer from "@/components/CountdownTimer";
 import ScheduleSection from "@/components/ScheduleSection";
 
@@ -275,7 +274,7 @@ export default function Home() {
 
       
       {/* Section Lokasi */}
-      <LocationSection />
+      {/* <LocationSection /> */}
 
       {/* Section Countdown */}
       <section className="py-20 bg-[#ffff] text-center">
