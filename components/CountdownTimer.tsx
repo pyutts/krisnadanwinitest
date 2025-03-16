@@ -12,11 +12,11 @@ interface TimeUnit {
 }
 
 const CountdownTimer = () => {
-  const weddingDate = new Date('2025-03-31T00:00:00');
+  const weddingDate = new Date('2025-04-09T10:00:00');
 
   const renderer = ({ days, hours, minutes, seconds, completed }: TimeUnit) => {
     if (completed) {
-      return <span>Acara telah selesai</span>;
+      return <span className='bg-[#B8860B] p-4 rounded-3xl'>Acara telah selesai</span>;
     }
 
     const timeUnits = [

@@ -31,16 +31,14 @@ const galleryImages = [
   "/images/Gallery/Gallery3.jpg",
   "/images/Gallery/Gallery4.jpg",
   "/images/Gallery/Gallery5.jpg",
-  "/images/Gallery/Gallery6.jpg",
   "/images/Gallery/Gallery7.jpg",
   "/images/Gallery/Gallery8.jpg",
-  "/images/Gallery/Gallery9.jpg",
   "/images/Gallery/Gallery10.jpg",
-  // "/images/Gallery/Gallery11.jpg",
-  // "/images/Gallery/Gallery12.jpg",
-  // "/images/Gallery/Gallery13.jpg",
-  // "/images/Gallery/Gallery14.jpg",
-  // "/images/Gallery/Gallery15.jpg",
+  "/images/Gallery/Gallery11.jpg",
+  "/images/Gallery/Gallery12.jpg",
+  "/images/Gallery/Gallery13.jpg",
+  "/images/Gallery/Gallery14.jpg",
+  "/images/Gallery/Gallery15.jpg",
 ];
 
 export default function Home() {
@@ -147,7 +145,7 @@ export default function Home() {
               Chrisna & Wini
             </h1>
             <div className="w-24 h-1 bg-[#B8860B] mx-auto"></div>
-            <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
+            <p className="text-xl font-serif">Rabu, 09 April 2025</p>
             <Button
               onClick={handleOpenInvitation}
               className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none px-8 py-6"
@@ -162,7 +160,7 @@ export default function Home() {
   }
   
   return (
-    <main className="bg-[#1a1a1a] text-white">
+    <main className="bg-[#1a1a1a] text-white">  
       <MusicPlayer />
   
       {/* Section Hero */}
@@ -194,7 +192,7 @@ export default function Home() {
           <p className="text-xl mb-4">The Wedding of</p>
           <h1 className="text-5xl md:text-7xl font-serif mb-4">Chrisna & Wini</h1>
           <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-4"></div>
-          <p className="text-xl font-serif">Senin, 31 Maret 2025</p>
+          <p className="text-xl font-serif">Rabu, 09 April 2025</p>
         </motion.div>
       </section>
 

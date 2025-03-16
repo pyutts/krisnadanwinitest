@@ -12,7 +12,7 @@ export default function MusicPlayer() {
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.volume = 0.5; // Volume awal
+      audio.volume = 0.5; // Volume diatur ke 50%
       audio.play().catch(() => console.log("aman"));
     }
   }, []);
@@ -26,7 +26,7 @@ export default function MusicPlayer() {
 
   return (
     <>
-      {/* Audio autoplay & loop */}
+      {/* Audio akan Autoplay dan akan di looping */}
       <audio ref={audioRef} src="/music/background-music.mp3" autoPlay loop />
 
       <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
@@ -35,7 +35,7 @@ export default function MusicPlayer() {
           onClick={() => setIsOpen(!isOpen)}
         ></button>
 
-        {/* Tombol volume (lebih dekat ke garis kuning) */}
+        {/* Tombol Volume */}
         <AnimatePresence>
           {isOpen && (
             <motion.button

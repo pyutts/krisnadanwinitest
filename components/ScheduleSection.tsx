@@ -1,4 +1,4 @@
-"use client"
+"use client" 
 
 import { Clock, MapPin, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -13,14 +13,13 @@ export default function ScheduleSection() {
   return (
     <section className="py-20 relative">
       {/* Background image */}
-      <div className="absolute inset-0 bg-black/70 z-0">
+      <div className="absolute inset-0 bg-black/100 z-0">
         <img
           src="/images/hero/hero2.jpg"
-          alt="Pemandangan pernikahan di Bali dengan nuansa romantis"
+          alt="Foto1"
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         />
       </div>
-
       <div className="container mx-auto px-4 relative z-10">
         {/* Top message */}
         <div className="max-w-3xl mx-auto mb-16">
@@ -35,7 +34,7 @@ export default function ScheduleSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/20"
+          className="max-w-md mx-auto bg-white/10 backdrop-blur-none rounded-3xl overflow-hidden border border-white/20"
         >
           <div className="flex">
             {/* Date section */}
@@ -75,7 +74,7 @@ export default function ScheduleSection() {
         {/* Thank you message */}
         <div className="max-w-3xl mx-auto mt-12 text-center">
           <p className="text-lg text-white mb-6">Atas kehadiran dan doa restunya kami ucapkan terimakasih.</p>
-          <p className="text-2xl font-serif text-white">Om Shanti Shanti Shanti Om</p>
+          <p className="text-2xl font-serif font-semibold text-white">"Om Shanti, Shanti, Shanti, Om"</p>
         </div>
       </div>
     </section>
