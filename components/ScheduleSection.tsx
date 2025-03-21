@@ -5,10 +5,7 @@ import { motion } from "framer-motion"
 
 export default function ScheduleSection() {
   const openGoogleMaps = () => {
-    
-    const latitude = -8.529106847305128;
-    const longitude = 115.33895299140273;
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`, '_blank');
+    window.open(`https://www.google.com/maps/place/8%C2%B031'45.4%22S+115%C2%B020'20.4%22E/@-8.529337,115.3389815,21z/data=!4m4!3m3!8m2!3d-8.529266!4d115.339012?entry=ttu&g_ep=EgoyMDI1MDMxOC4wIKXMDSoJLDEwMjExNjM5SAFQAw%3D%3D`, '_blank');
   };
   
   return (
@@ -51,12 +48,12 @@ export default function ScheduleSection() {
 
               <div className="flex items-center gap-2 mb-2 text-white">
                 <Clock className="w-4 h-4 text-white flex-shrink-0" />
-                <p className="text-sm">09:00 WITA-SELESAI</p>
+                <p className="text-sm">12:00 WITA-SELESAI</p>
               </div>
 
               <div className="flex items-start gap-2 mb-4 text-white">
                 <MapPin className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
-                <p className="text-sm">Br. tidak tahu, Ds. Samplangan, Kec. Samplangan, Kab. Gianyar</p>
+                <p className="text-sm">Br. Bukit Batu, Kec. Samplangan, Kab. Gianyar</p>
               </div>
 
               <div className="flex justify-center mt-2">
