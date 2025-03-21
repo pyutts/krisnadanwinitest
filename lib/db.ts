@@ -15,9 +15,9 @@ export interface MessageResult {
 
 const pool = mysql.createPool({
   host:'sql12.freesqldatabase.com',
-  user:'sql12766739',
-  password:'t5Qi7nhjDW',
-  database:'sql12766739',
+  user:'sql12768875',
+  password:'64J1iBBjJV',
+  database:'sql12768875',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

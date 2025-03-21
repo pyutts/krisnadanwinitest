@@ -5,8 +5,9 @@ import { motion } from "framer-motion"
 
 export default function ScheduleSection() {
   const openGoogleMaps = () => {
-    const latitude = -8.540798;
-    const longitude = 115.168182;
+    
+    const latitude = -8.529106847305128;
+    const longitude = 115.33895299140273;
     window.open(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`, '_blank');
   };
   
@@ -55,7 +56,7 @@ export default function ScheduleSection() {
 
               <div className="flex items-start gap-2 mb-4 text-white">
                 <MapPin className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
-                <p className="text-sm">Br. Sala, Ds. Sukawati, Kec. Sukawati, Kab. Gianyar</p>
+                <p className="text-sm">Br. tidak tahu, Ds. Samplangan, Kec. Samplangan, Kab. Gianyar</p>
               </div>
 
               <div className="flex justify-center mt-2">
