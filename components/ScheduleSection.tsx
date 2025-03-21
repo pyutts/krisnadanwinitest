@@ -38,7 +38,7 @@ export default function ScheduleSection() {
             {/* Date section */}
             <div className="bg-white/20 p-4 w-1/3 flex flex-col items-center justify-center">
               <h3 className="text-5xl font-bold text-white">09</h3>
-              <p className="text-base uppercase font-serif text-white">Maret</p>
+              <p className="text-base uppercase font-serif text-white">April</p>
               <p className="text-base font-serif text-white">2025</p>
             </div>
 
