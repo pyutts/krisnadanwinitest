@@ -241,7 +241,7 @@ export default function Home() {
                   className="object-cover rounded-full"
                 />
               </div>
-              <h3 className="text-xl font-serif mb-2 text-black">I Putu Agus Chrisna Reinaldy, S.H</h3>
+              <h3 className="text-xl font-serif mb-2 text-black">I Putu Agus Chrisna Reinaldy, S.H.</h3>
               <p className="text-[#B8860B] mb-2 font-serif">Putra Pertama dari Pasangan</p>
               <p className="font-serif text-black">I Putu Rajeg & Ni Ketut Wardani</p>
             </motion.div>
@@ -259,7 +259,7 @@ export default function Home() {
                   className="object-cover rounded-full"
                 />
               </div>
-              <h3 className="text-xl font-serif mb-2 text-black">Ni Wayan Wini Widarini, S.Pd., M.Pd</h3>
+              <h3 className="text-xl font-serif mb-2 text-black">Ni Wayan Wini Widarini, S.Pd., M.Pd.</h3>
               <p className="text-[#B8860B] mb-2 font-serif">Putri Pertama dari Pasangan</p>
               <p className="font-serif text-black">I Wayan Widiasna & Ni Wayan Sadrini</p>
             </motion.div>
