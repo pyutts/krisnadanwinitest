@@ -9,6 +9,8 @@ import MusicPlayer from "@/components/MusicPlayer";
 import ImageModal from "@/components/ImageModal";
 import CountdownTimer from "@/components/CountdownTimer";
 import ScheduleSection from "@/components/ScheduleSection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 interface Message {
   id: number;
@@ -148,7 +150,7 @@ export default function Home() {
             <p className="text-xl font-serif">Rabu, 09 April 2025</p>
             <Button
               onClick={handleOpenInvitation}
-              className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none px-8 py-6"
+              className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none rounded-full px-6 py-3"
             >
               Buka Undangan
             </Button>
@@ -193,11 +195,25 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-serif mb-4">Chrisna & Wini</h1>
           <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-4"></div>
           <p className="text-xl font-serif">Rabu, 09 April 2025</p>
+          <div className="flex justify-center mt-8">
+      <a
+        href="#hitung"
+        className="bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-full px-6 py-3 flex items-center justify-center w-[160px] shadow-md transition-all duration-300 gap-2"
+      >
+        <span className="text-sm font-medium">Scroll Bawah</span>
+        <FontAwesomeIcon icon={faArrowDown} className="text-sm opacity-75" />
+      </a>
+    </div>
+
+
         </motion.div>
       </section>
+      {/* Tombol Scroll ke Bawah */}
+  
+
 
        {/* Section Countdown */}
-       <section className="py-20 bg-[#ffff] text-center">
+       <section className="py-20 bg-[#ffff] text-center" id="hitung">
         <p className="text-center text-balance max-w-3xl mx-auto mb-12 font-semibold text-[#B8860B]">"Ya Tuhan, anugerahkanlah kepada pasangan pengantin ini kebahagiaan, keduanya tiada terpisahkan dan panjang umur. Semoga penganten ini dianugerahkan putra dan cucu yang memberikan penghiburan, tinggal di rumah yang penuh kegembiraan."
         </p>
         <div className="mx-auto w-32 h-1 bg-[#b18121] mb-2"></div>

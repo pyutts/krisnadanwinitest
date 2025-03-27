@@ -27,7 +27,7 @@ export default function MusicPlayer() {
   return (
     <>
       {/* Audio akan Autoplay dan akan di looping */}
-      <audio ref={audioRef} src="/music/background-music.mp3" autoPlay loop />
+      <audio ref={audioRef} src="/music/background-music.mp3" autoPlay loop/>
 
       <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
         <button

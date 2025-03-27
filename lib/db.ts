@@ -1,5 +1,9 @@
-import mysql from 'mysql2/promise';
-import { RowDataPacket } from 'mysql2';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://waoowdmkclypelijwhqn.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhb293ZG1rY2x5cGVsaWp3aHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwNTkwNjMsImV4cCI6MjA1ODYzNTA2M30.r6b1KQLT3V2u09ctlFyAiNJeNdtm3oKOH12bNf6f8Zs';
+
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export interface Message {
   id: number;
@@ -8,44 +12,34 @@ export interface Message {
   created_at: string;
 }
 
-export interface MessageResult {
-  insertId: number;
-  affectedRows: number;
-}
-
-const pool = mysql.createPool({
-  host:'sql12.freesqldatabase.com',
-  user:'sql12768875',
-  password:'64J1iBBjJV',
-  database:'sql12768875',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
-
+// Fungsi untuk mengambil pesan
 export async function getMessages(): Promise<Message[]> {
-  try {
-    const [rows] = await pool.execute<RowDataPacket[] & Message[]>(
-      'SELECT * FROM messages ORDER BY created_at DESC'
-    );
-    return rows;
-  } catch (error) {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
     console.error('Error fetching messages:', error);
     throw error;
   }
+
+  return data || [];
 }
 
-export async function addMessage(name: string, message: string): Promise<MessageResult> {
-  try {
-    const [result] = await pool.execute<mysql.ResultSetHeader>(
-      'INSERT INTO messages (name, message) VALUES (?, ?)',
-      [name, message]
-    );
-    return { insertId: result.insertId, affectedRows: result.affectedRows };
-  } catch (error) {
+// Fungsi untuk menambahkan pesan baru
+export async function addMessage(name: string, message: string) {
+  const { data, error } = await supabase
+    .from('messages')
+    .insert([{ name, message }])
+    .select();
+
+  if (error) {
     console.error('Error adding message:', error);
     throw error;
   }
+
+  return data;
 }
 
-export default pool;
+export default supabase;
