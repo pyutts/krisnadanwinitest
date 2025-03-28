@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import { getMessages } from "@/lib/db";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +19,7 @@ interface Message {
   id: number;
   name: string;
   message: string;
+  status: string;
   created_at: string;
 }
 
@@ -46,14 +50,19 @@ const galleryImages = [
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [newMessage, setNewMessage] = useState({ name: "", message: "" });
+  const [newMessage, setNewMessage] = useState({ name: "", message: "", status: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  const fetchMessages = async () => {
+    const data = await getMessages();
+    setMessages(data);
+  };
+
   useEffect(() => {
     fetchMessages();
-  }, []);
+  },[]);
 
   useEffect(() => {
     if (isOpen) {
@@ -67,55 +76,41 @@ export default function Home() {
     }
   }, [isOpen]);
 
-  const fetchMessages = async () => {
-    try {
-      const response = await fetch('/api/messages');
-      const data = await response.json();
-      setMessages(data);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-      toast.error("Mohon maaf, gagal mengambil pesan");
-    }
-  };
+  dayjs.extend(utc);
 
+
+
+  
   const handleSubmitMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newMessage.name && newMessage.message) {
-      setIsSubmitting(true);
-      try {
-        const response = await fetch('/api/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newMessage),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit message');
-        }
-
-        await response.json();
-        setNewMessage({ name: '', message: '' });
-        toast.success("Terima kasih, pesan Anda telah terkirim");
-        
-        const newMsg = {
-          id: Date.now(),
-          name: newMessage.name,
-          message: newMessage.message,
-          created_at: new Date().toISOString()
-        };
-        setMessages(prev => [newMsg, ...prev]);
-        
-        fetchMessages();
-      } catch (error) {
-        console.error('Error sending message:', error);
-        toast.error("Mohon maaf, gagal mengirim pesan");
-      } finally {
-        setIsSubmitting(false);
-      }
+    if (!newMessage.name || !newMessage.message || !newMessage.status) {
+      toast.error("Harap isi semua kolom termasuk status kehadiran.");
+      return;
+    }
+  
+    setIsSubmitting(true);
+  
+    try {
+      const response = await fetch("/api/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newMessage),
+      });
+  
+      if (!response.ok) throw new Error("Gagal mengirim pesan");
+  
+      const data: Message = await response.json();
+      setMessages((prevMessages) => [data, ...prevMessages]); // Gunakan prevMessages
+  
+      setNewMessage({ name: "", message: "", status: "" });
+      toast.success("Pesan terkirim!");
+    } catch (error) {
+      toast.error("Terjadi kesalahan, coba lagi nanti.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+  
 
 
   const handleOpenInvitation = () => {
@@ -150,7 +145,7 @@ export default function Home() {
             <p className="text-xl font-serif">Rabu, 09 April 2025</p>
             <Button
               onClick={handleOpenInvitation}
-              className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none rounded-full px-6 py-3"
+              className="mt-8 bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-none rounded-full px-8 py-6"
             >
               Buka Undangan
             </Button>
@@ -196,10 +191,10 @@ export default function Home() {
           <div className="w-24 h-1 bg-[#B8860B] mx-auto mb-4"></div>
           <p className="text-xl font-serif">Rabu, 09 April 2025</p>
           <div className="flex justify-center mt-8">
-      <a
-        href="#hitung"
-        className="bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-full px-6 py-3 flex items-center justify-center w-[160px] shadow-md transition-all duration-300 gap-2"
-      >
+            <a
+              href="#hitung"
+              className="bg-[#B8860B] hover:bg-[#8B6508] text-white border-none rounded-full px-6 py-3 flex items-center justify-center w-[160px] shadow-md transition-all duration-300 gap-2"
+            >
         <span className="text-sm font-medium">Scroll Bawah</span>
         <FontAwesomeIcon icon={faArrowDown} className="text-sm opacity-75" />
       </a>
@@ -335,71 +330,85 @@ export default function Home() {
             <div className="w-40 h-1 bg-[#B8860B] mx-auto"></div>
           </div>
           <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSubmitMessage} className="mb-8">
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Nama"
-                  value={newMessage.name}
-                  onChange={(e) => setNewMessage(prev => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-950"
-                  required
-                />
-              {/* <select
+             {/* Form Input */}
+            <form onSubmit={handleSubmitMessage} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Nama"
+                value={newMessage.name}
+                onChange={(e) => setNewMessage((prev) => ({ ...prev, name: e.target.value }))}
+                className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-900"
+                required
+              />
+
+              <select
                 value={newMessage.status}
-                onChange={(e) => setNewMessage(prev => ({ ...prev, status: e.target.value }))}
-                className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-700 appearance-none"
+                onChange={(e) => setNewMessage((prev) => ({ ...prev, status: e.target.value }))}
+                className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-900 bg-white"
                 required
               >
-                <option value="" disabled selected>Pilih Kehadiran</option>
-                <option value="hadir">Hadir</option>
-                <option value="tidak_hadir">Tidak Hadir</option>
-              </select> */}
+                <option value="" disabled>Pilih Status</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+              </select>
 
-                <textarea
-                  placeholder="Doa & Ucapan"
-                  value={newMessage.message}
-                  onChange={(e) => setNewMessage(prev => ({ ...prev, message: e.target.value }))}
-                  className="w-full px-4 py-2 bg-transparent border border-[#B8860B] rounded-md text-gray-950"
-                  rows={4}
-                  required
-                ></textarea>
-                <Button type="submit" className="w-full bg-[#B8860B] hover:bg-[#8B6508] text-white">
-                  Kirim
-                </Button>
-              </div>
+              <textarea
+                placeholder="Doa & Ucapan"
+                value={newMessage.message}
+                onChange={(e) => setNewMessage((prev) => ({ ...prev, message: e.target.value }))}
+                className="w-full px-4 py-2 border border-[#B8860B] rounded-md text-gray-900"
+                rows={4}
+                required
+              ></textarea>
+
+              <Button type="submit" className="w-full bg-[#B8860B] hover:bg-[#8B6508] text-white" disabled={isSubmitting}>
+                {isSubmitting ? "Mengirim..." : "Kirim"}
+              </Button>
             </form>
 
             {/* Menampilkan Pesan dari Database */}
-            <div className="space-y-6">
-              <AnimatePresence>
-                {messages.map((msg) => (
-                  <motion.div
-                    key={msg.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="p-4 border border-[#B8860B] rounded-md relative"
-                  >
-                    <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#B8860B]" />
-                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#B8860B]" />
-                    <div className="flex justify-between mb-2">
-                      <h3 className="font-semibold text-gray-600">{msg.name}</h3>
-                      <span className="text-sm text-gray-600">
-                        {new Date(msg.created_at).toLocaleDateString('id-ID', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit'
-                        })}
-                      </span>
-                    </div>
-                    <p className="text-gray-600">{msg.message}</p>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
+            <div className="space-y-6 py-12">
+                <AnimatePresence>
+                  {messages.length === 0 ? (
+                    <p className="text-center text-gray-500">Belum ada pesan</p>
+                  ) : (
+                    messages.map((msg) => (
+                      <motion.div
+                        key={msg.id || Math.random()} 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="p-4 border border-[#B8860B] rounded-md bg-white shadow-md"
+                      >                    
+                        {/* Nama dan Tanggal */}
+                        <div className="flex justify-between mb-2">
+                          <h3 className="font-semibold text-gray-700">{msg.name}</h3>
+                          <span className="text-sm text-gray-500">
+                            {msg.created_at
+                              ? dayjs.utc(msg.created_at).local().format("DD MMMM YYYY [pukul] HH:mm")
+                              : "Tanggal tidak tersedia"}
+                          </span>
+                        </div>
+
+                        {/* Pesan dan Status (sejajar) */}
+                        <div className="flex justify-between items-start">
+                          <p className="text-gray-600">{msg.message}</p>
+                          <p
+                            className={`text-sm font-semibold ${
+                              msg.status === "Hadir" ? "text-green-600" : "text-red-600"
+                            }`}
+                          >
+                            {msg.status}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
+              </div>
+
+
+
           </div>
         </div>
       </section>
@@ -427,6 +436,7 @@ export default function Home() {
         imageSrc={selectedImage || ''}
         images={galleryImages}
       />
+
     </main>
   );
   

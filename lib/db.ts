@@ -9,36 +9,31 @@ export interface Message {
   id: number;
   name: string;
   message: string;
+  status: string; 
   created_at: string;
 }
 
-// Fungsi untuk mengambil pesan
-export async function getMessages(): Promise<Message[]> {
+
+export async function getMessages() {
   const { data, error } = await supabase
-    .from('messages')
-    .select('*')
-    .order('created_at', { ascending: false });
+    .from("messages")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-  if (error) {
-    console.error('Error fetching messages:', error);
-    throw error;
-  }
-
-  return data || [];
+  if (error) throw new Error(error.message);
+  return data;
 }
 
-// Fungsi untuk menambahkan pesan baru
-export async function addMessage(name: string, message: string) {
+export async function addMessage(name: string, message: string, status: string) {
+  const created_at = new Date().toISOString(); 
+
   const { data, error } = await supabase
-    .from('messages')
-    .insert([{ name, message }])
-    .select();
+    .from("messages")
+    .insert([{ name, message, status, created_at }])
+    .select("*")
+    .single();
 
-  if (error) {
-    console.error('Error adding message:', error);
-    throw error;
-  }
-
+  if (error) throw new Error(error.message);
   return data;
 }
 
